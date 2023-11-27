@@ -1,0 +1,37 @@
+services:
+  rtl:
+    container_name: rtl
+    image: shahanafarooqui/rtl:0.14.1
+    restart: unless-stopped
+    volumes:
+      - lightning_shared:/shared
+      - rtl_db:/database
+      - ./RTL-Config.json:/rtl/RTL-Config.json #RTL config
+      - /path/to/your/lnd/directory:/lnd #LND directory, including macaroons and confs. Usually mounted as /root/.lnd in LND container
+    networks:
+      - bitcoin-nw
+      - traefik-nw
+    environment:
+      RTL_CONFIG_PATH: /rtl/
+    expose:
+      - 3000
+    labels:
+      traefik.enable: true
+      traefik.docker.network: traefik-nw
+      traefik.http.routers.rtl.rule: Host(`yourrtl.example.com`)
+      traefik.http.routers.rtl.service: rtl
+      traefik.http.routers.rtl.entrypoints: websecure
+      traefik.http.routers.rtl.tls.certresolver: cloudflare
+      traefik.http.services.rtl.loadbalancer.server.port: 3000
+
+volumes:
+  lightning_shared:
+    name: rtl-lightning-shared
+  rtl_db:
+    name: rtl-db
+
+networks:
+  bitcoin-nw:
+    external: true
+  traefik-nw:
+    external: true

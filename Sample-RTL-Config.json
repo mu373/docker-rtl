@@ -1,0 +1,25 @@
+{
+  "port": "3000",
+  "SSO": {
+    "rtlSSO": 0
+  },
+  "nodes": [
+    {
+      "index": 1,
+      "lnNode": "My LND Node",
+      "lnImplementation": "LND",
+      "Authentication": {
+        "macaroonPath": "/lnd/data/chain/bitcoin/mainnet/",
+        "configPath": "/lnd/lnd.conf"
+      },
+      "Settings": {
+        "logLevel": "INFO",
+        "userPersona": "OPERATOR",
+        "lnServerUrl": "https://lnd:8080",
+        "themeColor": "INDIGO"
+      }
+    }
+  ],
+  "defaultNodeIndex": 1,
+  "multiPass": "The password in plain text. Once logged in, it will be converted to multiPassHashed"
+}
