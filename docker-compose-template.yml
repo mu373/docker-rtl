@@ -13,6 +13,8 @@ services:
       - traefik-nw
     environment:
       RTL_CONFIG_PATH: /rtl/
+    # ports:
+    #   - 3070:3000 # Uncomment these port settings if you want to directly access RTL with HTTP at port 3070
     expose:
       - 3000
     labels:
