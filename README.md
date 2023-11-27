@@ -1,6 +1,6 @@
 # docker-rtl
 
-Run [Ride The Lightning](hhttps://github.com/Ride-The-Lightning/RTL/) independently as a container on Docker.
+Run [Ride The Lightning](https://github.com/Ride-The-Lightning/RTL/) independently as a container on Docker.
 
 ## Prerequisites
 - `bitcoind` running on a separate container
